@@ -134,7 +134,148 @@ class SystemStats(Static):
              pass
 
 class NVHTopApp(App):
-    CSS_PATH = "styles.tcss"
+    CSS = """
+Screen {
+    background: $surface;
+    layout: vertical;
+}
+
+#gpu-container {
+    height: auto;
+    max-height: 25%;
+    overflow-y: auto;
+    background: $surface;
+    border-bottom: heavy $secondary;
+}
+
+#system-stats {
+    height: auto;
+    max-height: 40%;
+    layout: grid;
+    grid-size: 2;
+    grid-gutter: 2;
+    padding: 1;
+    background: $surface;
+    border-bottom: heavy $secondary;
+}
+
+.cpu-column {
+    height: auto;
+    width: 100%;
+}
+
+.cpu-row {
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 8 1fr;
+    height: 1;
+    margin-bottom: 0;
+}
+
+.mem-swp-row {
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 8 1fr;
+    height: 1;
+    margin-top: 1;
+}
+
+.cpu-label {
+    width: 100%;
+    color: $success;
+    text-style: bold;
+}
+
+.gpu-card {
+    background: $panel;
+    border: tall $primary;
+    margin: 0 1;
+    padding: 0 1; 
+    height: auto;
+    border-title-color: $secondary;
+}
+
+.gpu-header-row {
+    layout: horizontal;
+    height: 1;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.gpu-name {
+    width: 1fr;
+    text-style: bold;
+    color: $accent;
+}
+
+.header-stats {
+    width: auto;
+    layout: horizontal;
+}
+
+.header-stat {
+    margin-left: 4;
+    color: $text-muted;
+}
+
+.stat-row {
+    layout: grid;
+    grid-size: 3;
+    grid-columns: 4 1fr 18; 
+    height: 1;
+    margin-bottom: 0;
+}
+
+.stat-label {
+    width: 100%;
+    color: $text-muted;
+}
+
+.stat-value {
+    content-align: right middle;
+    color: $text;
+}
+
+DataTable {
+    height: 1fr;
+    margin: 0 1 1 1;
+    border: tall $secondary;
+}
+
+#process-title {
+    margin-left: 1;
+    margin-top: 1;
+    text-style: bold;
+    color: $secondary;
+}
+
+/* Modal Styling */
+KillConfirmModal {
+    align: center middle;
+}
+
+#dialog {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    width: 60;
+    height: 11;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+#question {
+    column-span: 2;
+    height: 1fr;
+    width: 1fr;
+    content-align: center middle;
+}
+
+Button {
+    width: 100%;
+}
+"""
     BINDINGS = [
         Binding("q", "quit", "Quit"),
         Binding("k", "kill_process", "Kill Process"),
@@ -240,6 +381,9 @@ class NVHTopApp(App):
     def on_unmount(self) -> None:
         self.monitor.close()
 
-if __name__ == "__main__":
+def run():
     app = NVHTopApp()
     app.run()
+
+if __name__ == "__main__":
+    run()

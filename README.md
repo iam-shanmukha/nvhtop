@@ -1,4 +1,4 @@
-# NVHTop
+# NVHTop-TUI
 
 A `htop`-like utility for NVIDIA GPUs implemented in Python using `Textual` and `pynvml`.
 
@@ -9,6 +9,14 @@ A `htop`-like utility for NVIDIA GPUs implemented in Python using `Textual` and 
 - **Modern TUI**: Built with Textual for a premium terminal user interface experience.
 
 ## Installation
+
+You can install `nvhtop-tui` directly from PyPI:
+
+```bash
+pip install nvhtop-tui
+```
+
+### Manual Installation (Development)
 
 1. Create a virtual environment (optional but recommended):
    ```bash
@@ -23,16 +31,16 @@ A `htop`-like utility for NVIDIA GPUs implemented in Python using `Textual` and 
 
 ## Usage
 
-Run the utility:
+If installed via pip:
+
+```bash
+nvhtop-tui
+```
+
+If running from source:
 
 ```bash
 python main.py
-```
-
-Or using the provided script:
-
-```bash
-./run.sh
 ```
 
 ## Shortcuts
